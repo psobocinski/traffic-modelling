@@ -48,8 +48,8 @@ The 'tick' represents the smallest modelled unit of time. On every tick, the fol
 
 1. The length of elapsed time for all cars on the road is incremented by 1
 2. The remaining time is recalculated. If equal to or less than 0, those cars are removed from the road
-3. Current throughput metric is calculated for the "tick" on 2.
-4. 
+3. Repeat step 2 until there are no cars removed from the road
+4. Calculate throughput metric for steps 2 to 3
 
 ## Output metrics
 
