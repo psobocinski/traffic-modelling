@@ -1,0 +1,6 @@
+{
+  "arrivalProbability": 0.75,
+  "durationInTicks": 1000,
+  "laneCapacity": 50,
+  "timeOnRoadFunction": "0.5 * n"
+}
