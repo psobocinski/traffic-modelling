@@ -14,25 +14,20 @@ Logarithmic: t = A*log(B)(n)
 ### 1. Random
 
 - Car is placed in a lane at random
-- If lane is at max capacity, then wait until next tick
 - No lane changes occur.
 
 ### 2. Auto-levelling
 
-- Car is placed in whichever lane results in the smallest difference in car between lanes
-- If both lanes are at max capacity, then wait until next tick 
+- Car is placed in whichever lane results in the smallest difference in cars between lanes
 
 ### 3. Greedy drivers
 
 Lane is changed when:
 
 - Car initially enters a lane at random
-- Lane has not reached maximum capacity, AND
 - Minimum time t(ticks) spent in lane, AND:
 - Changing to adjacent lane reduces apparent time in traffic reduced by Y%, OR:
    - adjacent lane moving X times faster than current lane (TBD: whichever logic is simpler)
-
-Time taken for lane change: t(lane-change)
 
 ## Recalculating remaining time on road
 
