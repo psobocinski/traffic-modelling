@@ -19,6 +19,7 @@ Logarithmic: t = A*log(B)(n)
 ### 2. Auto-levelling
 
 - Car is placed in whichever lane results in the smallest difference in cars between lanes
+- No lane changes occur.
 
 ### 3. Greedy drivers
 
