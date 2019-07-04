@@ -1,6 +1,6 @@
 'use strict';
 
-const { arrivalProbability, durationInTicks, timeOnRoadFunction } = require('./config/index'),
+const { arrivalProbability, durationInTicks, timeOnRoadFunction } = require('./config'),
       ArrivalSequence = require('./lib/ArrivalSequence'),
       Simulation = require('./lib/Simulation');
 
