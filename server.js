@@ -5,6 +5,6 @@ const { arrivalProbability, durationInTicks, timeOnRoadFunction } = require('./c
       Simulation = require('./lib/Simulation');
 
 const arrivalSequence = (new ArrivalSequence(durationInTicks, arrivalProbability)).generate(),
-      simulateRandom = new Simulation('random', timeOnRoadFunction);
+      simulateRandom = new Simulation('random', timeOnRoadFunction, arrivalSequence);
 
-simulateRandom.run(arrivalSequence);
+simulateRandom.run();
