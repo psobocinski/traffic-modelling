@@ -3,11 +3,16 @@
 
 number of lanes = 2
 
-time on road = t, where n: number of vehicles in current lane and A, B: constants
+time on road: `t = f(n)`, where:
+   - `n`: number of vehicles in current lane (variable, used by simulation)
 
-Linear: t = A*n, OR
-Exponential: t = A*B^(n-1), OR
-Logarithmic: t = A*log(B)(n)
+Possible time on road functions:
+   - Linear: `A * n + M`
+   - Exponential: `A * B^(n - 1) + M`
+   - Logarithmic: `A * Math.log(n) / Math.log(B) + M`
+
+Note that the constants `A, B, M` must be replaced with non-zero numeric values prior to running the simulation.
+The constant `M` represents the minimum amount of time in lane (even when empty).
 
 ## II. Behaviour Modelling
 
@@ -23,12 +28,12 @@ Logarithmic: t = A*log(B)(n)
 
 ### 3. Greedy drivers
 
-Lane is changed when:
+1. Lane is changed when:
+   - Minimum time t(ticks) spent in lane, AND
+   - Remaining time in lane has increased beyond a minimum percentage
+1. New car then enters lane with lowest number of cars ("levelled" approach)
 
-- Car initially enters a lane at random
-- Minimum time t(ticks) spent in lane, AND:
-- Changing to adjacent lane reduces apparent time in traffic reduced by Y%, OR:
-   - adjacent lane moving X times faster than current lane (TBD: whichever logic is simpler)
+TODO: allow switching between levelled and random approach for car arrival via config.
 
 ## Recalculating remaining time on road
 
@@ -53,4 +58,4 @@ The 'tick' represents the smallest modelled unit of time. On every tick, the fol
 - N is total number of vehicles exited on that tick.
 - T is total time spent on road by all vehicles that exited on that tick.
 2. Average throughput per tick = average of all throughputs per tick for the length of the simulation
-3. Total throughput = sigma(N) / sigma(T) for the length of the simulation
+3. Total throughput = Σ(N) / Σ(T) for the length of the simulation
