@@ -34,7 +34,7 @@ Lane is changed when:
 
 Whenever number of cars in lane changes, the time remaining for every car is recalculated as follows:
 
-t(remaining) = |t(recalculated) - t(elapsed)|
+t(remaining) = Min\[t(recalculated) - t(elapsed), 0\]
 
 where t(recalculated) uses the original formula in section I.
 

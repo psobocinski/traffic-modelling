@@ -1,5 +1,5 @@
 {
-  "arrivalProbability": 0.75,
-  "durationInTicks": 1000,
-  "timeOnRoadFunction": "1 * n + 5"
+  "arrivalProbability": 0.9,
+  "durationInTicks": 10000,
+  "timeOnRoadFunction": "n + 5"
 }
