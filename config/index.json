@@ -1,5 +1,9 @@
 {
   "arrivalProbability": 0.9,
   "durationInTicks": 10000,
-  "timeOnRoadFunction": "n + 5"
+  "timeOnRoadFunction": "n + 5",
+  "laneChangeConditions": {
+    "minSlowdownPercent": 10,
+    "minTicksInLane": 5
+  }
 }
