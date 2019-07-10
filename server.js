@@ -6,8 +6,10 @@ const { arrivalProbability, durationInTicks, timeOnRoadFunction } = require('./c
       MetricsCalculator = require('./lib/MetricsCalculator');
 
 const arrivalSequence = (new ArrivalSequence(durationInTicks, arrivalProbability)).generate(),
-      simulateRandom = new Simulation('random', timeOnRoadFunction, arrivalSequence);
+      simulateRandom = new Simulation('random', timeOnRoadFunction, arrivalSequence),
+      simulateLevelled = new Simulation('levelled', timeOnRoadFunction, arrivalSequence);
 
 MetricsCalculator.printCommonMetrics(arrivalSequence);
 
 simulateRandom.run();
+simulateLevelled.run();
