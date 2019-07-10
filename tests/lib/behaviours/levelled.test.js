@@ -36,25 +36,23 @@ describe('levelled', () => {
   });
 
   describe('choosing lane', () => {
-    const carsForLane = laneName => mockRoad.lanes.find(lane => lane.name === laneName).cars;
-
     it('adds car to shortest lane', () => {
-      mockRoad.addCar('left');
+      mockRoad.addCar(1);
 
       levelled([true], mockRoad);
 
-      expect(carsForLane('left')).toHaveLength(1);
-      expect(carsForLane('right')).toHaveLength(1);
+      expect(mockRoad.lanes[0].cars).toHaveLength(1);
+      expect(mockRoad.lanes[1].cars).toHaveLength(1);
     });
 
     it('adds car to left lane when lanes have equal length', () => {
-      mockRoad.addCar('left');
-      mockRoad.addCar('right');
+      mockRoad.addCar(0);
+      mockRoad.addCar(1);
 
       levelled([true], mockRoad);
 
-      expect(carsForLane('left')).toHaveLength(2);
-      expect(carsForLane('right')).toHaveLength(1);
+      expect(mockRoad.lanes[0].cars).toHaveLength(2);
+      expect(mockRoad.lanes[1].cars).toHaveLength(1);
     })
   })
 });
