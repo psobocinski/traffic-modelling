@@ -6,7 +6,7 @@ describe('greedy', () => {
   let noop = () => null, mockRoad;
 
   beforeEach(() => {
-    mockRoad = new Road(noop, {tick: noop});
+    mockRoad = new Road({numberOfLanes: 2}, {tick: noop});
   });
 
   describe('processing arrival sequence', () => {

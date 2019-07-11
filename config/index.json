@@ -2,6 +2,7 @@
   "arrivalProbability": 0.9,
   "durationInTicks": 10000,
   "timeOnRoadFunction": "n + 10",
+  "numberOfLanes": 3,
   "laneChangeConditions": {
     "minTickDelayPercent": 30,
     "minTicksInLane": 3
