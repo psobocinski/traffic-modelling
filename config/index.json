@@ -3,7 +3,7 @@
   "durationInTicks": 10000,
   "timeOnRoadFunction": "n + 10",
   "laneChangeConditions": {
-    "minSlowdownPercent": 30,
+    "minTickDelayPercent": 30,
     "minTicksInLane": 3
   }
 }
