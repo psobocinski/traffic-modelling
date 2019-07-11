@@ -41,8 +41,8 @@ describe('levelled', () => {
 
       levelled([true], mockRoad);
 
-      expect(mockRoad.lanes[0].cars).toHaveLength(1);
-      expect(mockRoad.lanes[1].cars).toHaveLength(1);
+      expect(mockRoad.lanes[0]).toHaveLength(1);
+      expect(mockRoad.lanes[1]).toHaveLength(1);
     });
 
     it('adds car to left lane when lanes have equal length', () => {
@@ -51,8 +51,8 @@ describe('levelled', () => {
 
       levelled([true], mockRoad);
 
-      expect(mockRoad.lanes[0].cars).toHaveLength(2);
-      expect(mockRoad.lanes[1].cars).toHaveLength(1);
+      expect(mockRoad.lanes[0]).toHaveLength(2);
+      expect(mockRoad.lanes[1]).toHaveLength(1);
     })
   })
 });
