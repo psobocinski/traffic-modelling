@@ -1,6 +1,6 @@
 const utils = require('../../lib//utils');
 
-describe.only('utils', () => {
+describe('utils', () => {
   describe('newArray2D', () => {
     let newArray;
 
