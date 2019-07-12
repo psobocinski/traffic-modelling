@@ -1,7 +1,7 @@
 {
   "arrivalProbability": 0.9,
   "durationInTicks": 10000,
-  "timeOnRoadFunction": "n + 10",
+  "timeOnRoadFunction": "2 * Math.max(0, n - 5) + 20",
   "numberOfLanes": 3,
   "numberOfIterations": 3
 }

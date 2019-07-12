@@ -7,12 +7,18 @@ time on road: `t = f(n)`, where:
    - `n`: number of vehicles in current lane (variable, used by simulation)
 
 Possible time on road functions:
-   - Linear: `A * n + M`
-   - Exponential: `A * B^(n - 1) + M`
-   - Logarithmic: `A * Math.log(n) / Math.log(B) + M`
+   - Linear: `A * Math.max(0, n - N) + M`
+   - Quadratic: `A * Math.pow(Math.max(0, n - N), 2) + M`
 
-Note that the constants `A, B, M` must be replaced with non-zero numeric values prior to running the simulation.
-The constant `M` represents the minimum amount of time in lane (even when empty).
+Note that the constants `A, M, and N` must be replaced with non-zero numeric values prior to running the simulation.
+The constant `M` and `N` have special meaning:
+   - `M` is the minimum amount of time in the lane;
+   - `N` is the max number of cars where a constant time `M` is spent in the lane
+represents the minimum amount of time in lane (even when empty).
+
+Example function definitions:
+   - Linear: `2 * Math.max(0, n - 5) + 20`
+   - Quadratic: `0.5 * Math.pow(Math.max(0, n - 5), 2) + 20`
 
 ## II. Behaviour Modelling
 
