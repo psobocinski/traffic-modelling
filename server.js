@@ -1,16 +1,19 @@
 'use strict';
 
-const config = require('./config'),
+const commonConfig = require('./config/common'),
+      simulationsConfig = require('./config/simulations'),
       ArrivalSequence = require('./lib/ArrivalSequence'),
       Simulation = require('./lib/Simulation');
 
-const arrivalSequence = (new ArrivalSequence(config)).generate(),
-      simulateRandom = new Simulation('random', config, arrivalSequence),
-      simulateLevelled = new Simulation('levelled', config, arrivalSequence),
-      simulateGreedy = new Simulation('greedy', config, arrivalSequence);
+let arrivalSequence, config, simulation, simulations = [];
 
-simulateRandom.metricsCalculator.printCommonMetrics();
+arrivalSequence = (new ArrivalSequence(commonConfig)).generate();
 
-simulateRandom.run();
-simulateLevelled.run();
-simulateGreedy.run();
+simulationsConfig.forEach(simulationConfig => {
+  config = Object.assign(commonConfig, simulationConfig);
+  simulation = new Simulation(config, arrivalSequence);
+  simulations.push(simulation);
+});
+
+simulations[0].metricsCalculator.printCommonMetrics();
+simulations.forEach(simulation => simulation.run());

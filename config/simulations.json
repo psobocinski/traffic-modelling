@@ -1,0 +1,24 @@
+[
+  {
+    "lanePlacement": "random",
+    "laneChangeConditions": null
+  },
+  {
+    "lanePlacement": "random",
+    "laneChangeConditions": {
+      "minTickDelayPercent": 30,
+      "minTicksInLane": 3
+    }
+  },
+  {
+    "lanePlacement": "levelled",
+    "laneChangeConditions": null
+  },
+  {
+    "lanePlacement": "levelled",
+    "laneChangeConditions": {
+      "minTickDelayPercent": 30,
+      "minTicksInLane": 3
+    }
+  }
+]
