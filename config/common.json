@@ -3,5 +3,5 @@
   "durationInTicks": 10000,
   "timeOnRoadFunction": "n + 10",
   "numberOfLanes": 3,
-  "numberOfIterations": 10
+  "numberOfIterations": 3
 }
