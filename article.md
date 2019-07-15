@@ -2,13 +2,13 @@
 
 Traffic congestion is a problem.
 
-A study from last year concludes Toronto (my home town) to be the [20th most congested city in the world](http://inrix.com/scorecard-city/?city=Toronto%2C%20ON&index=20), with an average of 164 hours spent in congestion in 2018.
+A study from last year found my home town Toronto to be the [20th most congested city in the world](http://inrix.com/scorecard-city/?city=Toronto%2C%20ON&index=20), with an average of 164 hours spent in congestion in 2018.
 
 I am not surprised.
 
 Early in my career, I commuted over an hour twice a day. In a year, that works out to roughly 21 days sitting in traffic. It feels particularly wasteful when I consider that I spent it driving. With transit, I can a least spend the time reading a book or catching up on news.
 
-Fortunately, I have it a bit better these days (it takes me 10 minutes to walk to work). However, I can't help but wonder how much time commuters could save if we reduced traffic congestion. In my case, even a 10% improvement could saved me a couple of days every year.
+I have it a bit better these days (it takes me 10 minutes to walk to work). I still can't help but wonder how much time commuters could save if we reduced traffic congestion. In my case, even a 10% improvement could saved me a couple of days every year.
 
 ## How much time would we save if cars drove themselves?
 
@@ -20,7 +20,7 @@ More specifically, what if we rely on self-driving cars to place us in a lane of
 
 The goal of this article is introduce an approach to answering this question quantitatively through the use of a simplified traffic model. In particular, the model aims to programmatically simulate traffic conditions and human behaviour.
 
-Before exploring how self-driving cars can manage traffic better than we can, however, there's a preliminary question we should answer.
+Before exploring how self-driving cars can manage traffic better than we can, there is a more fundamental question we should answer.
 
 ## Is Opportunistic Lane-Changing a Zero-sum game?
 
@@ -36,18 +36,20 @@ Wikipedia defines a zero-sum game as follows:
 
 In our case, we say that opportunistic lane-changing is a zero-sum game when such behaviour does not result in a better outcome for all commuters on the road (over a given time period).
 
-Our traffic model will explore the above hypothesis.  
+If we can conclude a zero-sum game, we can also conclude that self-driving cars can manage traffic better than humans simply by _not changing lanes at all_.
 
 ## Assumptions and Definitions
 
+In order to explore the "zero-sum game" hypothesis, we'll clarify some terms and define what to measure.
+
 ### Lane Change Conditions
 
-Let's start with the notion of "opportunistic lane-changing". Here are two lane change conditions that seem reasonable to me (drawing on my past experience as a commuter):
+Let's start with the notion of "opportunistic lane-changing". Here are two lane change conditions that seem reasonable:
 
 1. The other lane appears to be moving a certain percentage faster than my current lane, AND
 2. I have spent a certain minimum length of time in my current lane
 
-To keep the model simple, I will modify the first condition as follows:
+To keep the model simple, we modify the first condition as follows:
 
 - Changing to the other lane drops my remaining time in traffic by a given percentage
 
@@ -64,7 +66,7 @@ The ideal length of time spent on the road is zero. Therefore, we define two met
 
 ### Cars Remaining
 
-Given we set the following conditions the same for all simulation runs:
+Given that the following conditions remain the same for all simulation runs:
 
 - number of cars entering the road
 - simulation duration
@@ -110,7 +112,7 @@ The graph above portrays a simplified yet reasonably possible time on road funct
 
 ### Time Unit (tick)
 
-Due to this being a programmatic model, we introduce the notion of the tick. This serves two main purposes:
+Due to this being a programmatic model, we introduce the notion of a **tick**. This serves two main purposes:
 
 - An arbitrary unit of time used in model
 - The smallest progression step (or increment) in the simulation where a change can occur.
@@ -118,7 +120,6 @@ Due to this being a programmatic model, we introduce the notion of the tick. Thi
 ### Simluation Overview
 
 **[DIAGRAM GOES HERE]**
-
 
 The diagram above represents the general design of the simluation. The key concepts are:
 
@@ -161,6 +162,65 @@ Here are the input conditions that can be different for every simulation run (i.
 
 ## Running the Simulations
 
+Through trial and error, we determine an appropriate set of conditions. The ideal parameters should result in:
+
+1. The number of cars in lane exceeds the congestion-free capacity most of the time: This ensures that actual traffic congestion is 
+2. Most of the the cars that entered the road have exited it by the end of the simulation
+
+As we are interested in observing the effects of traffic congestion, #1 is necessary. On the other hand, #2 ensures we are modelling a functional road that is serves its purpose of "carrying" traffic through it.
+
+Based on the above, here are the Input Conditions that we have settled on:
+
+```javascript
+{
+  "arrivalProbability": 0.9,
+  "durationInTicks": 10000,
+  "laneChangeDelayTicks": 1,
+  "timeOnRoadFunction": "2 * Math.max(0, n - 5) + 20",
+  "numberOfLanes": 3,
+  "numberOfIterations": 3
+}
+```
+
+### Experiment 1: Varying Lane Change Conditions
+
+First, we keep the minimum time in lane constant, and change the Time Saved Percentage.
+
+| Min Time in Lane | Time Saved % | Avg Time | Cars Remain | Aggregate Time | Aggregate Throughput ( cars / 100 ticks) |
+| ---------------- | ------------ | -------- | ----------- | -------------- | ---------------------------------------- | 
+| n/a: no lane chg | n/a          | 
+| 3                | 10           |
+| 3                | 20           |
+| 3                | 30           |
+| 3                | 40           |
+| 3                | 50           |
+
+
+
+
+
+```javascript
+[
+  {
+    "laneChangeConditions": null
+  },
+  {
+    "laneChangeConditions": {
+      "minTicksInLane": 3,
+      "minTickSpeedupPercent": 10,
+    }
+  },
+  {
+    "laneChangeConditions": {
+      "minTicksInLane": 3,
+      "minTickSpeedupPercent": 50,
+    }
+  }
+]
+```
+
+
+## Experiment 2: Varying Lane Change Delay
 
 
 
