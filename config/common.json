@@ -2,7 +2,8 @@
   "arrivalProbability": 0.9,
   "durationInTicks": 10000,
   "laneChangeDelayTicks": 1,
-  "timeOnRoadFunction": "2 * Math.max(0, n - 5) + 20",
+  "lanePlacement": "random",
   "numberOfLanes": 3,
-  "numberOfIterations": 3
+  "numberOfIterations": 3,
+  "timeOnRoadFunction": "2 * Math.max(0, n - 5) + 20"
 }

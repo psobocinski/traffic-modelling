@@ -1,10 +1,8 @@
 [
   {
-    "lanePlacement": "random",
     "laneChangeConditions": null
   },
   {
-    "lanePlacement": "random",
     "laneChangeConditions": {
       "minTickDelayPercent": 30,
       "minTickSpeedupPercent": 30,
