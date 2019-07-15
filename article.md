@@ -61,8 +61,8 @@ Second, we define what a "better outcome" means in our model. In particular, we 
 
 The ideal length of time spent on the road is zero. Therefore, we define two metrics:
 
-- **Aggregate Time:** A total of every driver's time spent on the road
 - **Average Time:** The average time spent by drivers on the road
+- **Aggregate Time:** A total of every driver's time spent on the road
 
 ### Cars Remaining
 
@@ -171,7 +171,7 @@ As we are interested in observing the effects of traffic congestion, #1 is neces
 
 Based on the above, here are the Input Conditions that we have settled on:
 
-```javascript
+```json
 {
   "arrivalProbability": 0.9,
   "durationInTicks": 10000,
@@ -184,43 +184,53 @@ Based on the above, here are the Input Conditions that we have settled on:
 
 ### Experiment 1: Varying Lane Change Conditions
 
-First, we keep the minimum time in lane constant, and change the Time Saved Percentage.
+We change the two Lane Change Conditions independently, starting with Minimum Time in Lane.
+
+#### Effect of changing Minimum Time in Lane
+
+Keeping the Time Saved Percentage constant, we change the Minimum Time in Lane. Note that the first row represents the case where no lane change conditions occur.
 
 | Min Time in Lane | Time Saved % | Avg Time | Cars Remain | Aggregate Time | Aggregate Throughput ( cars / 100 ticks) |
-| ---------------- | ------------ | -------- | ----------- | -------------- | ---------------------------------------- | 
-| n/a: no lane chg | n/a          | 
-| 3                | 10           |
-| 3                | 20           |
-| 3                | 30           |
-| 3                | 40           |
-| 3                | 50           |
+| ---------------- | ------------ | -------- | ----------- | -------------- | ---------------------------------------- |
+| n/a | n/a | 26.3 | 15 | 236135 | 3.81 |
+| 0 | 60 | 25.9 | 21 | 232877 | 3.86 |
+| 4 | 60 | 24.1 | 17 | 216977 | 4.14 |
+| 8 | 60 | 23.6 | 16 | 211796 | 4.24 |
+| 12 | 60 | 22.7 | 16 | 204093 | 4.4 |
+| 16 | 60 | 22.5 | 17 | 201838 | 4.45 |
+| 20 | 60 | 22.2 | 15 | 199707 | 4.5 |
+| 24 | 60 | 22.6 | 16 | 202745 | 4.43 |
+
+All results perform better than the no-lane-change case. also, there is an optimal value for Min Time in Lane (that yields the maximum throughput) around a Min Time in Lane of 20 ticks.
+
+#### Effect of changing Time Saved Percentage
+
+Now, we change the Mininum Time in Lane, while keeping Time Saved Percentage constant.
+
+| Min Time in Lane | Time Saved % | Avg Time | Cars Remain | Aggregate Time | Aggregate Throughput ( cars / 100 ticks) |
+| ---------------- | ------------ | -------- | ----------- | -------------- | ---------------------------------------- |
+| n/a | n/a | 25.9 | 24 | 233837 | 3.85 |
+| 3 | 30 | 28.7 | 26 | 258991 | 3.48 |
+| 3 | 60 | 24.3 | 19 | 219160 | 4.11 |
+| 3 | 90 | 22.6 | 19 | 203798 | 4.42 |
+| 3 | 120 | 22.2 | 20 | 200388 | 4.5 |
+| 3 | 150 | 22 | 21 | 198475 | 4.54 |
+| 3 | 180 | 22 | 17 | 197931 | 4.55 |
+| 3 | 210 | 22 | 21 | 198392 | 4.54 |
+
+We can see the second result performs worse than the no-lane-changes case. Also, the model yields a better outcome as the "Time Saved Percentage" lane change condition is increased, until the value reaches 210%. At this point, the throughput and the other metrics (average time, cars remaining, and aggregate time) start to creep up.
+
+#### Conclusion
+
+The data yields three key conclusions:
+
+1. Depending on the specific values, opportunistic lane changing can yield either a better or worse outcome than no lane changing 
+2. There is an optimal set of opportunistic lane change conditions that yield the best outcome possible
+3. Opportunitistic lane changing can yield a significantly better outcome than no lane changing (18% better in the above case)
 
 
 
+### Experiment 2: Varying Lane Change Delay
 
-
-```javascript
-[
-  {
-    "laneChangeConditions": null
-  },
-  {
-    "laneChangeConditions": {
-      "minTicksInLane": 3,
-      "minTickSpeedupPercent": 10,
-    }
-  },
-  {
-    "laneChangeConditions": {
-      "minTicksInLane": 3,
-      "minTickSpeedupPercent": 50,
-    }
-  }
-]
-```
-
-
-## Experiment 2: Varying Lane Change Delay
-
-
+F
 
