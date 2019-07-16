@@ -1,0 +1,53 @@
+[
+  {
+    "laneChangeConditions": null
+  },
+  {
+    "laneChangeConditions": {
+      "minTickSpeedupPercent": 60,
+      "minTicksInLane": 0
+    }
+  },
+  {
+    "laneChangeConditions": {
+      "minTickSpeedupPercent": 60,
+      "minTicksInLane": 5
+    }
+  },
+  {
+    "laneChangeConditions": {
+      "minTickSpeedupPercent": 60,
+      "minTicksInLane": 10
+    }
+  },
+  {
+    "laneChangeConditions": {
+      "minTickSpeedupPercent": 60,
+      "minTicksInLane": 15
+    }
+  },
+  {
+    "laneChangeConditions": {
+      "minTickSpeedupPercent": 60,
+      "minTicksInLane": 20
+    }
+  },
+  {
+    "laneChangeConditions": {
+      "minTickSpeedupPercent": 60,
+      "minTicksInLane": 25
+    }
+  },
+  {
+    "laneChangeConditions": {
+      "minTickSpeedupPercent": 60,
+      "minTicksInLane": 30
+    }
+  },
+  {
+    "laneChangeConditions": {
+      "minTickSpeedupPercent": 60,
+      "minTicksInLane": 9999999
+    }
+  }
+]
