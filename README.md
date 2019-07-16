@@ -1,4 +1,4 @@
-# Game Traffic Modelling
+# Game Theory Traffic Modelling
 
 ## Install
 

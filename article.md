@@ -104,7 +104,7 @@ This assumption allows us to keep the model simple, as we avoid having to consid
 
 ### Time on Road Function
 
-**[DIAGRAM GOES HERE]**
+**TODO: DIAGRAM GOES HERE**
 
 `t[total] = A * max(0, n - N) + M`
 
@@ -119,7 +119,7 @@ Due to this being a programmatic model, we introduce the notion of a **tick**. T
 
 ### Simluation Overview
 
-**[DIAGRAM GOES HERE]**
+**TODO: DIAGRAM GOES HERE**
 
 The diagram above represents the general design of the simluation. The key concepts are:
 
@@ -176,9 +176,9 @@ Based on the above, here are the Input Conditions that we have settled on:
   "arrivalProbability": 0.9,
   "durationInTicks": 10000,
   "laneChangeDelayTicks": 5,
-  "timeOnRoadFunction": "2 * Math.max(0, n - 5) + 20",
+  "numberOfIterations": 5,
   "numberOfLanes": 3,
-  "numberOfIterations": 3
+  "timeOnRoadFunction": "2 * Math.max(0, n - 5) + 20"
 }
 ```
 
@@ -202,6 +202,8 @@ Keeping the Time Saved Percentage constant, we change the Minimum Time in Lane. 
 | 30 | 60 | 24.7 | 22 | 222337 | 4.05 |
 | 99999999 | 60 | 26.5 | 19 | 238777 | 3.77 |
 
+**TODO: REPLACE TABLE WITH LINE CHART**
+
 Given that we set the "Time Saved %" lane change condition constant at 60%, the model yields an optimum result at a Min Time in Lane of around 25 ticks. Also note that at lower values, it performs worse than the no-lane-changes case.
 
 #### Part B: Effect of changing Time Saved Percentage
@@ -219,6 +221,8 @@ Now, we change the Mininum Time in Lane, while keeping Time Saved Percentage con
 | 2 | 180 | 24.3 | 28 | 219550 | 4.11 |
 | 2 | 210 | 24.2 | 21 | 218634 | 4.13 |
 | 2 | 99999999 | 24.2 | 21 | 218670 | 4.13 |
+
+**TODO: REPLACE TABLE WITH LINE CHART**
 
 Similar to Part A, the simulation performs worse than the no-ane-changes case at lower values of "Time Saved %". Also, the simulation yields a better outcome as the "Time Saved Percentage" lane change condition is increased. The gains begin to taper off at 210% and a throughput of 4.15. (*)
 
@@ -244,8 +248,8 @@ Experienced drivers will likely not find this conclusion surprising. The benefit
 
 Also, we have not had the change to fully explore the hypothetical potential of self-driving cars. A random lane assignment with no lane changes will inevitably lead to imbalanced lanes. A valuable avenue to explore is how a lane-levelling algorithm competes against the opportunistic lane changing behaviour we have explored here. We hope to pursue this in the next part of this blog post.
 
+#### Source Code
 
+https://github.com/connected-psobocinski/game-theory-traffic-modelling
 
-
-
-
+**TODO: MOVE TO PUBLIC REPO**
