@@ -5,6 +5,7 @@
   "lanePlacement": "random",
   "numberOfIterations": 5,
   "numberOfLanes": 3,
-  "outputFormat": "markdown",
+  "outputFormat": "csv",
+  "outputPath": "./results",
   "timeOnRoadFunction": "2 * Math.max(0, n - 5) + 20"
 }
