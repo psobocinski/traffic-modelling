@@ -242,13 +242,21 @@ Furthermore, a net-positive result for all drivers seems reasonably achievable, 
 
 Therefore, we can conclude that generally speaking, **opportunistic lane changing is not a zero-sum gain**, and can benefit all drivers on the road if exercised judiciously. This means not changing lanes too frequently (i.e. adhering to a reasonable minimum time in lane), and only changing lanes if it saves a signicant amount of time (i.e. the time saved is 90% or higher).
 
-#### Future Improvements
+#### Next Steps
 
-Experienced drivers will likely not find this conclusion surprising. The benefit of having this model is that statistical data could be applied, which would give a more concrete optimum range given varying conditions that we held constant (for example, number of lanes).
+"Be patient. Change lanes, but not frivolously. Everybody wins."
 
-Also, we have not had the change to fully explore the hypothetical potential of self-driving cars. A random lane assignment with no lane changes will inevitably lead to imbalanced lanes. A valuable avenue to explore is how a lane-levelling algorithm competes against the opportunistic lane changing behaviour we have explored here. We hope to pursue this in the next part of this blog post.
+This is essentially what the results tell us. Experienced drivers will likely not find this conclusion surprising.
+
+Perhaps the model could unlock more benefit by having actual traffic data mapped to it. Doing so could yield a more concrete optimum range given varying conditions that we had held constant in our investigation. For example, modelling various traffic conditions by defining a different **Time on Road Function**.
+
+Moreover, we have only begun to explore the potential of self-driving cars, in the context of the model. A random lane assignment with no lane changes will inevitably lead to imbalanced lanes. This strongly suggests that a lane-levelling algorithm can be a significant performance improvement over the no-lane-changes case.
+
+Therefore, it would be potentially valuable to investigate how such an algorithm compares to an opportunistic lane changing strategy. This is what we aim to pursue in the second part of this article. Stay tuned!
 
 #### Source Code
+
+The model is written in Node JS and is available under an open-source MIT license:
 
 https://github.com/connected-psobocinski/game-theory-traffic-modelling
 
