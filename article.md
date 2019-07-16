@@ -44,16 +44,16 @@ In order to explore the "zero-sum game" hypothesis, we'll clarify some terms and
 
 ### Lane Change Conditions
 
-Let's start with the notion of "opportunistic lane-changing". Here are two lane change conditions that seem reasonable:
+Let's start with the notion of "opportunistic lane-changing". The term "opportunistic" is used to indicate that the driver will act opportunistically for their own self interest, i.e. they will not consider the effects of their actions on other drivers.
 
-1. The other lane appears to be moving a certain percentage faster than my current lane, AND
+In light of this, here are two lane change conditions that seem reasonable:
+
+"As a driver, I will change lanes if all of the following conditions are met:"
+
+1. Changing to the other lane drops my remaining time in traffic by a certain percentage
 2. I have spent a certain minimum length of time in my current lane
 
-To keep the model simple, we modify the first condition as follows:
-
-- Changing to the other lane drops my remaining time in traffic by a given percentage
-
-### Metrics
+### Traffic Performance Metrics
 
 Second, we define what a "better outcome" means in our model. In particular, we define quantitative metrics such that lower values indicate the better outcome.
 
@@ -175,62 +175,77 @@ Based on the above, here are the Input Conditions that we have settled on:
 {
   "arrivalProbability": 0.9,
   "durationInTicks": 10000,
-  "laneChangeDelayTicks": 1,
+  "laneChangeDelayTicks": 5,
   "timeOnRoadFunction": "2 * Math.max(0, n - 5) + 20",
   "numberOfLanes": 3,
   "numberOfIterations": 3
 }
 ```
 
-### Experiment 1: Varying Lane Change Conditions
+### Results of Varying Lane Change Conditions on Traffic Performance
 
 We change the two Lane Change Conditions independently, starting with Minimum Time in Lane.
 
-#### Effect of changing Minimum Time in Lane
+#### Part A: Effect of changing Minimum Time in Lane
 
 Keeping the Time Saved Percentage constant, we change the Minimum Time in Lane. Note that the first row represents the case where no lane change conditions occur.
 
 | Min Time in Lane | Time Saved % | Avg Time | Cars Remain | Aggregate Time | Aggregate Throughput ( cars / 100 ticks) |
 | ---------------- | ------------ | -------- | ----------- | -------------- | ---------------------------------------- |
-| n/a | n/a | 26.3 | 15 | 236135 | 3.81 |
-| 0 | 60 | 25.9 | 21 | 232877 | 3.86 |
-| 4 | 60 | 24.1 | 17 | 216977 | 4.14 |
-| 8 | 60 | 23.6 | 16 | 211796 | 4.24 |
-| 12 | 60 | 22.7 | 16 | 204093 | 4.4 |
-| 16 | 60 | 22.5 | 17 | 201838 | 4.45 |
-| 20 | 60 | 22.2 | 15 | 199707 | 4.5 |
-| 24 | 60 | 22.6 | 16 | 202745 | 4.43 |
+| n/a | n/a | 26.5 | 19 | 238586 | 3.77 |
+| 0 | 60 | 51.9 | 74 | 467290 | 1.93 |
+| 5 | 60 | 36.8 | 23 | 330752 | 2.72 |
+| 10 | 60 | 27.2 | 45 | 244972 | 3.68 |
+| 15 | 60 | 25.1 | 19 | 225633 | 3.99 |
+| 20 | 60 | 24.6 | 19 | 221734 | 4.06 |
+| 25 | 60 | 24.2 | 21 | 218049 | 4.13 |
+| 30 | 60 | 24.7 | 22 | 222337 | 4.05 |
+| 99999999 | 60 | 26.5 | 19 | 238777 | 3.77 |
 
-All results perform better than the no-lane-change case. also, there is an optimal value for Min Time in Lane (that yields the maximum throughput) around a Min Time in Lane of 20 ticks.
+Given that we set the "Time Saved %" lane change condition constant at 60%, the model yields an optimum result at a Min Time in Lane of around 25 ticks. Also note that at lower values, it performs worse than the no-lane-changes case.
 
-#### Effect of changing Time Saved Percentage
+#### Part B: Effect of changing Time Saved Percentage
 
 Now, we change the Mininum Time in Lane, while keeping Time Saved Percentage constant.
 
 | Min Time in Lane | Time Saved % | Avg Time | Cars Remain | Aggregate Time | Aggregate Throughput ( cars / 100 ticks) |
 | ---------------- | ------------ | -------- | ----------- | -------------- | ---------------------------------------- |
-| n/a | n/a | 25.9 | 24 | 233837 | 3.85 |
-| 3 | 30 | 28.7 | 26 | 258991 | 3.48 |
-| 3 | 60 | 24.3 | 19 | 219160 | 4.11 |
-| 3 | 90 | 22.6 | 19 | 203798 | 4.42 |
-| 3 | 120 | 22.2 | 20 | 200388 | 4.5 |
-| 3 | 150 | 22 | 21 | 198475 | 4.54 |
-| 3 | 180 | 22 | 17 | 197931 | 4.55 |
-| 3 | 210 | 22 | 21 | 198392 | 4.54 |
+| n/a | n/a | 26.6 | 24 | 240121 | 3.76 |
+| 2 | 30 | 56.2 | 83 | 507291 | 1.78 |
+| 2 | 60 | 35.2 | 55 | 317806 | 2.84 |
+| 2 | 90 | 25.1 | 26 | 226751 | 3.98 |
+| 2 | 120 | 24.5 | 29 | 221222 | 4.08 |
+| 2 | 150 | 24.3 | 25 | 219458 | 4.12 |
+| 2 | 180 | 24.3 | 28 | 219550 | 4.11 |
+| 2 | 210 | 24.2 | 21 | 218634 | 4.13 |
+| 2 | 99999999 | 24.2 | 21 | 218670 | 4.13 |
 
-We can see the second result performs worse than the no-lane-changes case. Also, the model yields a better outcome as the "Time Saved Percentage" lane change condition is increased, until the value reaches 210%. At this point, the throughput and the other metrics (average time, cars remaining, and aggregate time) start to creep up.
+Similar to Part A, the simulation performs worse than the no-ane-changes case at lower values of "Time Saved %". Also, the simulation yields a better outcome as the "Time Saved Percentage" lane change condition is increased. The gains begin to taper off at 210% and a throughput of 4.15. (*)
 
-#### Conclusion
+(*) Lane changes occur even at a very high "Time Saved %" threshold, because a lane change will always occur when the time remaining in the new lane is zero.
 
-The data yields three key conclusions:
+### Conclusion
 
-1. Depending on the specific values, opportunistic lane changing can yield either a better or worse outcome than no lane changing 
-2. There is an optimal set of opportunistic lane change conditions that yield the best outcome possible
-3. Opportunitistic lane changing can yield a significantly better outcome than no lane changing (18% better in the above case)
+The results yield three key conclusions:
+
+1. Depending on input or lane change conditions, opportunistic lane changing can yield either a better or worse outcome than no lane changing 
+2. There is an optimal combination of opportunistic lane change conditions that yield the best outcome possible
+3. Opportunistic lane changing can yield a significantly better outcome than no lane changing (~10%). Further simulation runs can determine a combined optimum for both lane change conditions that potentially yields an even better improvement than identified here.
+
+If opportunistic lane changes in congested traffic were a zero-sum game, we would yield the same set of metrics for all simulation runs. Instead, we discovered that opportunistic lane changing to be both less performant and more performant than no lane changing.
+
+Furthermore, a net-positive result for all drivers seems reasonably achievable, even while pursuing an opportunistic approach (specifically, the one we described here).
+
+Therefore, we can conclude that generally speaking, **opportunistic lane changing is not a zero-sum gain**, and can benefit all drivers on the road if exercised judiciously. This means not changing lanes too frequently (i.e. adhering to a reasonable minimum time in lane), and only changing lanes if it saves a signicant amount of time (i.e. the time saved is 90% or higher).
+
+#### Future Improvements
+
+Experienced drivers will likely not find this conclusion surprising. The benefit of having this model is that statistical data could be applied, which would give a more concrete optimum range given varying conditions that we held constant (for example, number of lanes).
+
+Also, we have not had the change to fully explore the hypothetical potential of self-driving cars. A random lane assignment with no lane changes will inevitably lead to imbalanced lanes. A valuable avenue to explore is how a lane-levelling algorithm competes against the opportunistic lane changing behaviour we have explored here. We hope to pursue this in the next part of this blog post.
 
 
 
-### Experiment 2: Varying Lane Change Delay
 
-F
+
 
