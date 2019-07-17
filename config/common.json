@@ -8,6 +8,14 @@
   "timeOnRoadFunction": "2 * Math.max(0, n - 5) + 20",
   "output": {
     "format": "csv",
-    "path": "./results"
+    "path": "./results",
+    "columns": {
+      "minTicksInLane": "Min Time in Lane",
+      "minTickSpeedupPercent": "Time Saved %",
+      "averageTimeOnRoad": "Avg Time",
+      "carsRemaining": "Cars Remain",
+      "carsOnRoadAggregateTime": "Aggregate Time",
+      "overallThroughput": "Aggregate Throughput (cars / 100 ticks)"
+    }
   }
 }
