@@ -22,6 +22,6 @@ simulations[0].metricsCalculator.printCommonMetrics();
 simulationResults = simulations.map(simulation =>
   simulation.run());
 
-table = (new TableGenerator(commonConfig.outputFormat)).generate(simulationResults);
+table = (new TableGenerator(commonConfig.output.format)).generate(simulationResults);
 
-createOutputFile(commonConfig, table);
+createOutputFile(commonConfig.output, table);
