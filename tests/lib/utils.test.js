@@ -1,3 +1,5 @@
+'use strict';
+
 const utils = require('../../lib//utils');
 
 describe('utils', () => {
@@ -21,7 +23,7 @@ describe('utils', () => {
   });
 
   describe('indexOfShortestLane', () => {
-    let lanes, c;
+    let lanes, index, c;
 
     it('returns the index of shortest lane', () => {
       lanes = [ [c], [] ];

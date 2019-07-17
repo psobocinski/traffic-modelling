@@ -1,4 +1,6 @@
-const SimulationRunner = require('../../lib//SimulationRunner'),
+'use strict';
+
+const SimulationRunner = require('../../lib/SimulationRunner'),
       noop = () => null;
 
 describe('SimulationRunner', () => {
