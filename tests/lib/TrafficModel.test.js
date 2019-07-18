@@ -1,10 +1,10 @@
 'use strict';
 
-const SimulationRunner = require('../../lib/SimulationRunner'),
+const TrafficModel = require('../../lib/TrafficModel'),
       noop = () => null;
 
-describe('SimulationRunner', () => {
-  let runner = new SimulationRunner({
+describe('TrafficModel', () => {
+  let runner = new TrafficModel({
     laneChangeConditions: {}
   });
 
