@@ -3,21 +3,20 @@
 const commonConfig = require('./config/common'),
   simulationsConfig = require('./config/simulations'),
   { createOutputFile } = require('./lib/utils'),
-  ArrivalSequence = require('./lib/ArrivalSequence'),
+  { TrafficModel } = require('./lib/TrafficModel'),
   Simulation = require('./lib/Simulation'),
   TableGenerator = require('./lib/TableGenerator');
 
-let arrivalSequence, config, simulation, simulations = [], simulationResults, table;
-
-arrivalSequence = (new ArrivalSequence(commonConfig)).generate();
+let config, simulation, simulations = [], simulationResults, table, trafficModel = new TrafficModel(commonConfig);
 
 simulationsConfig.forEach(simulationConfig => {
   config = Object.assign({}, commonConfig.simulationDefaults, simulationConfig);
-  simulation = new Simulation(commonConfig, config, arrivalSequence);
+  simulation = new Simulation(commonConfig, config, trafficModel);
   simulations.push(simulation);
 });
 
-simulations[0].metricsCalculator.printCommonMetrics();
+// TODO: replace
+// simulations[0].metricsCalculator.printCommonMetrics();
 
 simulationResults = simulations.map(simulation =>
   simulation.run());

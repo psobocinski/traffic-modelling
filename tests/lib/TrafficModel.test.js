@@ -1,14 +1,14 @@
 'use strict';
 
-const TrafficModel = require('../../lib/TrafficModel'),
+const { LaneChangeDecider } = require('../../lib/TrafficModel'),
       noop = () => null;
 
-describe('TrafficModel', () => {
-  const newModel = config => new TrafficModel(config);
+describe('LaneChangeDecider', () => {
+  const newDecider = config => new LaneChangeDecider(config);
 
   describe('isChangingLanes', () => {
     let car = {timeDelayPercent: noop, timeSpeedupPercent: noop},
-      model = newModel({});
+      model = newDecider({});
 
     describe('minTicksInLane condition', () => {
       it('returns true when elapsedTimeInLane equal to minTicksInLane', () => {
@@ -28,7 +28,7 @@ describe('TrafficModel', () => {
 
     describe('multiple conditions', () => {
       it('ignores unset conditions', () => {
-        model = newModel({
+        model = newDecider({
           minTickDelayPercent: 50,
           minTickSpeedupPercent: 20
         });
@@ -42,7 +42,7 @@ describe('TrafficModel', () => {
       });
 
       it('returns false when one condition fails', () => {
-        model = newModel({
+        model = newDecider({
           minTickDelayPercent: 50,
           minTickSpeedupPercent: 20,
           minTicksInLane: 10
@@ -57,7 +57,7 @@ describe('TrafficModel', () => {
       });
 
       it('returns true when all conditions are met', () =>{
-        model = newModel({
+        model = newDecider({
           minTickDelayPercent: 50,
           minTickSpeedupPercent: 20,
           minTicksInLane: 10
