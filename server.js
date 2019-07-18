@@ -12,8 +12,8 @@ let arrivalSequence, config, simulation, simulations = [], simulationResults, ta
 arrivalSequence = (new ArrivalSequence(commonConfig)).generate();
 
 simulationsConfig.forEach(simulationConfig => {
-  config = Object.assign({}, commonConfig, simulationConfig);
-  simulation = new Simulation(config, arrivalSequence);
+  config = Object.assign({}, commonConfig.simulationDefaults, simulationConfig);
+  simulation = new Simulation(commonConfig, config, arrivalSequence);
   simulations.push(simulation);
 });
 
