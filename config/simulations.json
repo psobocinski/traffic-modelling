@@ -1,11 +1,11 @@
 [
   { "minTicksInLane": null, "minTickSpeedupPercent": null },
-  { "minTickSpeedupPercent": 30 },
-  { "minTickSpeedupPercent": 60 },
-  { "minTickSpeedupPercent": 90 },
-  { "minTickSpeedupPercent": 120 },
-  { "minTickSpeedupPercent": 150 },
-  { "minTickSpeedupPercent": 180 },
-  { "minTickSpeedupPercent": 210 },
-  { "minTickSpeedupPercent": 99999999 }
+  { "minTicksInLane": 0 },
+  { "minTicksInLane": 5 },
+  { "minTicksInLane": 10 },
+  { "minTicksInLane": 15 },
+  { "minTicksInLane": 20 },
+  { "minTicksInLane": 25 },
+  { "minTicksInLane": 30 },
+  { "minTicksInLane": 9999999 }
 ]
