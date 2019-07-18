@@ -6,6 +6,12 @@ const { LaneChangeDecider } = require('../../lib/TrafficModel'),
 describe('LaneChangeDecider', () => {
   const newDecider = config => new LaneChangeDecider(config);
 
+  describe('constructor', () => {
+    it('defaults laneChangeDelayTicks property to zero', () => {
+      expect(newDecider({}).laneChangeDelayTicks).toBe(0);
+    });
+  });
+
   describe('isChangingLanes', () => {
     let car = {timeDelayPercent: noop, timeSpeedupPercent: noop},
       model = newDecider({});
