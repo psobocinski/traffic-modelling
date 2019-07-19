@@ -2,25 +2,10 @@
 
 const commonConfig = require('./config/common'),
   simulationsConfig = require('./config/simulations'),
-  { createOutputFile } = require('./lib/utils'),
-  { TrafficModel } = require('./lib/TrafficModel'),
-  Simulation = require('./lib/Simulation'),
-  TableGenerator = require('./lib/TableGenerator');
+  SimulationRunner = require('./lib/SimulationRunner'),
+  { TrafficModel } = require('./lib/TrafficModel');
 
-let config, simulation, simulations = [], simulationResults, table, trafficModel = new TrafficModel(commonConfig);
+const trafficModel = new TrafficModel(commonConfig),
+  runner = new SimulationRunner(commonConfig, simulationsConfig, trafficModel);
 
-simulationsConfig.forEach(simulationConfig => {
-  config = Object.assign({}, commonConfig.simulationDefaults, simulationConfig);
-  simulation = new Simulation(commonConfig, config, trafficModel);
-  simulations.push(simulation);
-});
-
-// TODO: replace
-// simulations[0].metricsCalculator.printCommonMetrics();
-
-simulationResults = simulations.map(simulation =>
-  simulation.run());
-
-table = (new TableGenerator(commonConfig.output)).generate(simulationResults);
-
-createOutputFile(commonConfig.output, table);
+runner.run();
