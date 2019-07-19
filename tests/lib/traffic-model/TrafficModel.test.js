@@ -1,6 +1,6 @@
 'use strict';
 
-const { LaneChangeDecider } = require('../../lib/TrafficModel'),
+const LaneChangeDecider = require('../../../lib/traffic-model/LaneChangeDecider'),
       noop = () => null;
 
 describe('LaneChangeDecider', () => {
