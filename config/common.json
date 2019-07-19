@@ -13,13 +13,13 @@
   "output": {
     "format": "csv",
     "path": "./results",
-    "columns": {
-      "minTicksInLane": "Min Time in Lane",
-      "minTickSpeedupPercent": "Time Saved %",
-      "averageTimeOnRoad": "Avg Time",
-      "carsRemaining": "Cars Remain",
-      "carsOnRoadAggregateTime": "Aggregate Time",
-      "overallThroughput": "Aggregate Throughput (cars / 100 ticks)"
-    }
+    "columns": [
+      [ "minTicksInLane", "Min Time in Lane" ],
+      [ "minTickSpeedupPercent", "Time Saved %" ],
+      [ "averageTimeOnRoad", "Avg Time" ],
+      [ "carsRemaining", "Cars Remain" ],
+      [ "carsOnRoadAggregateTime", "Aggregate Time" ],
+      [ "overallThroughput", "Aggregate Throughput (cars / 100 ticks)" ]
+    ]
   }
 }

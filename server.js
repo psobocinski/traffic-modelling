@@ -21,6 +21,6 @@ simulationsConfig.forEach(simulationConfig => {
 simulationResults = simulations.map(simulation =>
   simulation.run());
 
-table = (new TableGenerator(commonConfig.output.format)).generate(simulationResults);
+table = (new TableGenerator(commonConfig.output)).generate(simulationResults);
 
 createOutputFile(commonConfig.output, table);
