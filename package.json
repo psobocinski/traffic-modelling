@@ -14,5 +14,8 @@
   "repository": {
     "type": "git",
     "url": "git@github.com:connected-psobocinski/game-theory-traffic-modelling.git"
+  },
+  "dependencies": {
+    "inquirer": "^6.5.0"
   }
 }
