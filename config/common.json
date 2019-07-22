@@ -1,7 +1,7 @@
 {
   "arrivalProbability": 0.9,
   "durationInTicks": 10000,
-  "numberOfIterations": 5,
+  "numberOfIterations": 10,
   "simulationDefaults": {
     "laneChangeDelayTicks": 5,
     "lanePlacement": "random",
