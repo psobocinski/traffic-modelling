@@ -2,8 +2,10 @@
   "name": "game-theory-traffic-modelling",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
   "scripts": {
+    "configure": "node configure.js",
+    "simulate": "node simulate.js",
+    "start": "node configure.js ; node simulate.js",
     "test": "jest"
   },
   "author": "Paul Sobocinski",
@@ -17,8 +19,5 @@
   },
   "dependencies": {
     "inquirer": "^6.5.0"
-  },
-  "scripts": {
-    "configure": "node configure.js"
   }
 }

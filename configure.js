@@ -1,4 +1,4 @@
-const fs = require('fs'),
+const { createConfigFile } = require('./lib/utils'),
   inquirer = require('inquirer'),
   independentVariables = [
     { name: 'laneChangeDelayTicks', type: 'number' },
@@ -9,8 +9,7 @@ const fs = require('fs'),
   validators = {
     integer: input => Number.isInteger(parseFloat(input)) ? true : 'Must be an integer',
     number: input => Number.isNaN(parseFloat(input)) ? 'Must be a number' : true
-  },
-  outputPathAndFilename = './config/simulations.json';
+  };
 
 function validateSmallestValue(input, answers) {
   const selectedIndependentVariable = independentVariables.find(({ name }) =>
@@ -72,10 +71,5 @@ inquirer
       simulations.push(simulation);
     }
 
-    fs.writeFile(outputPathAndFilename, JSON.stringify(simulations, null, 2), function(error) {
-      if (error)
-        return console.log(error);
-
-      console.log(`results outputted to file: ${outputPathAndFilename}`);
-    });
+    createConfigFile('simulations.json', simulations);
   });
