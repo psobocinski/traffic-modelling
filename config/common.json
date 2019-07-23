@@ -14,6 +14,8 @@
     "format": "csv",
     "path": "./results",
     "columns": [
+      [ "simulationTime", "Elapsed Time of Simulation" ],
+      [ "carsEntered", "Number of Cars entered" ],
       [ "laneChangeDelayTicks", "Lane Change Delay" ],
       [ "minTicksInLane", "Min Time in Lane" ],
       [ "minTickSpeedupPercent", "Time Saved %" ],
@@ -21,7 +23,8 @@
       [ "averageTimeOnRoad", "Avg Time" ],
       [ "carsRemaining", "Cars Remain" ],
       [ "carsOnRoadAggregateTime", "Aggregate Time" ],
-      [ "overallThroughput", "Aggregate Throughput (cars / 100 ticks)" ]
+      [ "overallThroughput", "Aggregate Throughput (cars / 100 ticks)" ],
+      [ "averageThroughput", "Average Throughput per tick (cars / 100 ticks)" ]
     ]
   }
 }
