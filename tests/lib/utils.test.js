@@ -21,24 +21,4 @@ describe('utils', () => {
       expect(newArray).toEqual([[], ['x']]);
     });
   });
-
-  describe('indexOfShortestLane', () => {
-    let lanes, index, c;
-
-    it('returns the index of shortest lane', () => {
-      lanes = [ [c], [] ];
-
-      index = utils.indexOfShortestLane(lanes);
-
-      expect(index).toEqual(1);
-    });
-
-    it('returns the lowest index when lanes have same length', () => {
-      lanes = [ [c, c], [c, c] ];
-
-      index = utils.indexOfShortestLane(lanes);
-
-      expect(index).toEqual(0);
-    });
-  });
 });
