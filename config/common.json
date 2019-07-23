@@ -14,8 +14,10 @@
     "format": "csv",
     "path": "./results",
     "columns": [
+      [ "laneChangeDelayTicks", "Lane Change Delay" ],
       [ "minTicksInLane", "Min Time in Lane" ],
       [ "minTickSpeedupPercent", "Time Saved %" ],
+      [ "numberOfLanes", "Number of Lanes" ],
       [ "averageTimeOnRoad", "Avg Time" ],
       [ "carsRemaining", "Cars Remain" ],
       [ "carsOnRoadAggregateTime", "Aggregate Time" ],
