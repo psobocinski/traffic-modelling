@@ -13,6 +13,40 @@ describe('utils', () => {
     })
   });
 
+  describe('calculateAverageResult', () => {
+    it('returns a row containing the average of all table rows', () => {
+      const results = [
+          [1, 2],
+          [3, 4]
+        ],
+        avg = utils.calculateAverageResult(results);
+
+      expect(avg).toEqual([2, 3]);
+    });
+
+    it('rounds to two decimal points', () => {
+      const results = [
+          [1.11],
+          [2]
+        ],
+        avg = utils.calculateAverageResult(results);
+
+      expect(avg).toEqual([1.56]);
+    });
+
+    it('ignores non-numeric values', () => {
+      const results = [
+          [null, undefined, 5, 'x', {}],
+          ['--', '--', 10, '--', '--']
+        ],
+        avg = utils.calculateAverageResult(results);
+
+      expect(avg).toEqual(
+        [undefined, undefined, 7.5, undefined, undefined]
+      );
+    });
+  });
+
   describe('isSet', () => {
     describe('true for', () => {
       it('0', () => expect(utils.isSet(0)).toBe(true));
