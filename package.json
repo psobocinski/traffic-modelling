@@ -6,7 +6,8 @@
     "configure": "node configure.js",
     "simulate": "node simulate.js",
     "start": "node configure.js ; node simulate.js",
-    "test": "jest"
+    "specs": "jest",
+    "test": "jest ; eslint *.js lib"
   },
   "author": "Paul Sobocinski",
   "license": "MIT",

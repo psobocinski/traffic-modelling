@@ -63,8 +63,5 @@ The following can be included in the results file by adding them to the common c
 
 ## Development
 
-Run tests: `npm test -- --watch`
-
-TODO: Add ESLint.
-
-TODO: Add Travis.
+- Run ESLint and all tests: `npm test`
+- Run tests while you code: `npm run specs -- --watch`
