@@ -2,4 +2,5 @@
 .idea
 node_modules
 results
+config/common.json
 config/simulations.json
