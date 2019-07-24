@@ -1,8 +1,8 @@
-'use strict';
 
-const independentVariables = require('./lib/traffic-model/independentVariables'),
-  CommonConfigInitializer = require('./lib/CommonConfigInitializer'),
-  SimulationsConfigurator = require('./lib/SimulationsConfigurator');
+
+const independentVariables = require('./lib/traffic-model/independentVariables');
+const CommonConfigInitializer = require('./lib/CommonConfigInitializer');
+const SimulationsConfigurator = require('./lib/SimulationsConfigurator');
 
 const configurator = new SimulationsConfigurator(independentVariables);
 
