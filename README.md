@@ -48,13 +48,14 @@ It also generates the results and writes them to the path and format as specifie
 
 ### Traffic Performance Metrics
 
-The following can be included in the results file by adding them to the common configuration:
+The following can be included in the results file by adding them to the common configuration (under `output.columns`):
 
 - simulationTime
 - carsEntered
 - carsRemaining
 - averageTimeOnRoad
 - carsOnRoadAggregateTime
+- totalLaneChanges
 - overallThroughput
 - averageThroughput
 

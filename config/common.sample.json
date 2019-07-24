@@ -23,6 +23,7 @@
       [ "averageTimeOnRoad", "Avg Time" ],
       [ "carsRemaining", "Cars Remain" ],
       [ "carsOnRoadAggregateTime", "Aggregate Time" ],
+      [ "totalLaneChanges", "Number of Lane Changes" ],
       [ "overallThroughput", "Aggregate Throughput (cars / 100 ticks)" ],
       [ "averageThroughput", "Average Throughput per tick (cars / 100 ticks)" ]
     ]
