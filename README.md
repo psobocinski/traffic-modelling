@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/connected-psobocinski/game-theory-traffic-modelling.svg?token=pHzM6UUyziLSPd12YQfX&branch=master)](https://travis-ci.com/connected-psobocinski/game-theory-traffic-modelling)
+
 # Traffic Modelling
 
 A simple computer model for simulating traffic congestion.
