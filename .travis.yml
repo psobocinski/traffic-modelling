@@ -1,1 +1,4 @@
 language: node_js
+before_script:
+  - cp config/common.sample.json config/common.json
+  - echo '[]' > config/simulations.json
