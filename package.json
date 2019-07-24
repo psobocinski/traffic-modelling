@@ -1,13 +1,13 @@
 {
-  "name": "game-theory-traffic-modelling",
+  "name": "traffic-modelling",
   "version": "1.0.0",
-  "description": "",
+  "description": "A simple computer model for simulating traffic congestion.",
   "scripts": {
-    "configure": "node configure.js",
-    "simulate": "node simulate.js",
-    "start": "node configure.js ; node simulate.js",
+    "configure": "node scripts/configure.js",
+    "simulate": "node scripts/simulate.js",
+    "start": "npm run configure ; npm run simulate",
     "specs": "jest",
-    "test": "jest ; eslint *.js lib"
+    "test": "jest && eslint scripts lib"
   },
   "author": "Paul Sobocinski",
   "license": "MIT",
