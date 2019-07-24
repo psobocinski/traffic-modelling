@@ -26,14 +26,16 @@ Copied from the sample file: `config/common.sample.json`. Contains the following
 1. `simulationDefaults`: The values of the Independent Variables used in all simulations, unless they are overridden in the simulation configuration
    1. `laneChangeDelayTicks`: The time added to the Total Time in Lane upon a lane change
    1. `lanePlacement`: How each Car is assigned to a Lane (`levelled` or `random`)
-   1. `minTicksInLane`:
-   1. `minTickSpeedupPercent`:
-   1. `numberOfLanes`:
-   1. `timeOnRoadFunction`:
-1. `output`:
-   1. `format`:
-   1. `path`:
-   1. `columns`:
+   1. `minTicksInLane`: The minimum time in Lane until Car considers switching Lanes
+   1. `minTickSpeedupPercent`: The minimum time saved by switching Lanes for Car to consider switching Lanes
+   1. `numberOfLanes`: The number of lanes (minimum 2)
+   1. `timeOnRoadFunction`: The function `t = f(n)` used to calculate total time on road `t`. Based on `n`, the number of Cars in lane.
+1. `output`: Configuration for how simulation output is written
+   1. `format`: File format (`markdown` or `csv`).
+   1. `path`: File path (filename will be `results`).
+   1. `columns`: Columns to include in results. Array of tuples. First entry is the variable name, the second is the column header used. Examples:
+      - `[ "minTicksInLane", "Min Time in Lane" ]`
+      - `[ "overallThroughput", "Aggregate Throughput (cars / 100 ticks)" ]`
 
 ### 2. Simulation-specific Configuration: `config/simulations.json`
 
