@@ -1,0 +1,5 @@
+config
+docs
+node_modules
+results
+tests
