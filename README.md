@@ -10,7 +10,7 @@ A simple computer model for simulating traffic congestion.
 
 ## Overview
 
-TODO: fill this out.
+For an overview of the computer model and how it can be used, please see this article [investigating whether lane changing in traffic is a zero-sum game](# "Link to article goes here").
 
 ## Configuring the model
 
@@ -52,16 +52,20 @@ It also generates the results and writes them to the path and format as specifie
 
 The following can be included in the results file by adding them to the common configuration (under `output.columns`):
 
-- simulationTime
-- carsEntered
-- carsRemaining
-- averageTimeOnRoad
-- carsOnRoadAggregateTime
-- totalLaneChanges
-- overallThroughput
-- averageThroughput
+- `simulationTime`: Elapsed time of simulation
+- `carsEntered`: Total number of cars entered over the course of the simulation
+- `carsRemaining`: Cars remaining on the road at the end of the simulation
+- `averageTimeOnRoad`: Average time spent on the road by all cars
+- `carsOnRoadAggregateTime`: Total of all times spent by all cars on the road
+- `totalLaneChanges`: Total number of lane changes that occurred
+- `overallThroughput`: Measures traffic performance.
+  - `Aggregate Throughput (cars / 100 ticks) = Total Cars Exited / Aggregate Time * 100`
+- `averageThroughput`: Same as above, except that it is calculated per tick, then averaged
 
 ## Development
 
-- Run ESLint and all tests: `npm test`
 - Run tests while you code: `npm run specs -- --watch`
+- Run ESLint and all tests: `npm test`
+  - NOTE: also runs in Travis CI
+- Run ESLint on its own: `npm run lint`
+  - NOTE: not recommended, instead configure your IDE to use the project's ESLint configuration
