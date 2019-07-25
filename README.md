@@ -12,7 +12,7 @@ A simple computer model for simulating traffic congestion.
 
 ## Overview
 
-For an overview of the computer model and how it can be used, please see this article [investigating whether lane changing in traffic is a zero-sum game](# "Link to article goes here").
+For an overview of the computer model and how it can be used, please see this article [investigating whether lane changing in traffic is a zero-sum game](https://www.connected.io/post/traffic-modelling-is-beating-traffic-congestion-a-zero-sum-game).
 
 ## Configuring the model
 
