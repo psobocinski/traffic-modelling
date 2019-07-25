@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/psobocinski/traffic-modelling.svg?branch=master)](https://travis-ci.com/psobocinski/traffic-modelling)
+
 # Traffic Modelling
 
 A simple computer model for simulating traffic congestion.
