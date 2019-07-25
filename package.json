@@ -5,9 +5,10 @@
   "scripts": {
     "configure": "node scripts/configure.js",
     "simulate": "node scripts/simulate.js",
-    "start": "npm run configure ; npm run simulate",
     "specs": "jest",
-    "test": "jest && eslint scripts lib"
+    "lint": "eslint .",
+    "start": "npm run configure ; npm run simulate",
+    "test": "npm run specs && npm run lint"
   },
   "author": "Paul Sobocinski",
   "license": "MIT",
@@ -19,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:connected-psobocinski/game-theory-traffic-modelling.git"
+    "url": ""
   },
   "dependencies": {
     "inquirer": "^6.5.0"
